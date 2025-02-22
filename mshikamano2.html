@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mshikamano Bus Transport</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #2c3e50; /* Dark blue background *//* Light gray background */
+            color: #333; /* Dark text */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50; /* Dark blue background */
+            color: #fff; /* White text */
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .sidebar nav a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar nav a:hover {
+            background-color: #34495e; /* Slightly lighter blue on hover */
+        }
+
+        .sidebar nav a i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 250px; /* Adjusted for sidebar */
+            padding: 20px;
+            flex: 1;
+            background-color: #2c3e50; /* Dark blue background */
+            background-color: ; /* White background for content */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: white; /* Dark blue text */
+        }
+
+        .main-content p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: white; /* Dark blue text */
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #3498db; /* Light blue icon color */
+            margin-bottom: 10px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            color: #2c3e50; /* Dark blue text */
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Booking Grid */
+        .booking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #2c3e50; /* Dark blue background */
+        }
+
+        .booking-box {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-box h3 {
+            font-size: 1.25rem;
+            color: #2c3e50; /* Dark blue text */
+            margin-bottom: 10px;
+        }
+
+        .booking-box input, .booking-box select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .booking-box button {
+            width: 100%;
+            padding: 10px;
+            background-color:  #3498db ;/* Light blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .booking-box button:hover {
+            background-color: #2c3e50 ; /* Darker blue on hover */
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50; /* Dark blue background */
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        footer .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        footer .social-links a:hover {
+            color: #3498db; /* Light blue on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Mshikamano</h2>
+        <nav>
+            <a href="#home">
+                <i class="fas fa-home"></i>
+                <span>nyumbani</span>
+            </a>
+            <a href="#routes">
+                <i class="fas fa-route"></i>
+                <span>barabara zetu</span>
+            </a>
+            <a href="#tickets">
+                <i class="fas fa-ticket-alt"></i>
+                <span> nunua Ticketi</span>
+            </a>
+            <a href="#fleet">
+                <i class="fas fa-bus"></i>
+                <span>misafara yetu</span>
+            </a>
+            <a href="#about">
+                <i class="fas fa-info-circle"></i>
+                <span>kuhusu sisi</span>
+            </a>
+            <a href="#contact">
+                <i class="fas fa-envelope"></i>
+                <span>kwa taarifa zaidi</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Karibu Mshikamano Bus Transport</h1>
+        <p>
+            Mshikamano Bus Transport ni mpenzi wako wa kutumainiwa kwa usafiri salama, wa kuaminika, na wa starehe. Ikiwa unasafiri kila siku au unapanga safari ya masafa marefu, tunahakikisha safari yako ni rahisi na yenye kuvutia kwa kutumia magari yetu ya kisasa na wafanyikazi wa kiprofesheni. Nunua tiketi zako mtandaoni leo na ujione kwa ubora wa usafiri wa mabasi!
+        </p>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <!-- Free Internet -->
+            <div class="feature-card">
+                <i class="fas fa-wifi"></i>
+                <h3>Internet Bure</h3>
+                <p>Kaa ukiwa umeunganishwa kwa kutumia Wi-Fi ya bure kwenye mabasi yote yetu. Fanya kazi, vinjari, au stream wakati unaposafiri.</p>
+            </div>
+
+            <!-- Good Customer Care -->
+            <div class="feature-card">
+                <i class="fas fa-wifi"></i>
+                <h3>Huduma nzuri kwa wateja</h3>
+                <p>Wafanyikazi wetu wenye urafiki na kiprofesheni wako tayari kila wakati kukusaidia kwa maswali yoyote au mahitaji yako.</p>
+            </div>
+
+            <!-- Safe Delivery -->
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>ufikishaji salama</h3>
+                <p>Usalama wako ni kipaumbele chetu. Tunahakikisha safari salama na starehe kwa abiria wote</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="booking-grid">
+        <!-- Where You Are Box -->
+        <div class="booking-box">
+            <h3>unapotoka</h3>
+            <select>
+                <option value="">chagua mahali</option>
+                <option value="nairobi">MVUMI</option>
+                <option value="mombasa">DODOMA</option>
+                <option value="kisumu">DAR</option>
+                <option value="kisumu">MOROGORO</option>
+            </select>
+        </div>
+
+        <!-- Where You're Going Box -->
+        <div class="booking-box">
+            <h3>unapokwenda</h3>
+            <select>
+                <option value="">chagua unapokwenda</option>
+                <option value="nairobi">MVUMI</option>
+                <option value="mombasa">DODOMA</option>
+                <option value="kisumu">DAR</option>
+                <option value="kisumu">MOROGORO</option>
+            </select>
+        </div>
+
+        <!-- Calendar Box -->
+        <div class="booking-box">
+            <h3>Tarehe ya kusafiri</h3>
+            <input type="date">
+        </div>
+
+        <!-- Check Ticket Availability Box -->
+        <div class="booking-box">
+            <h3>ANGALIA RATIBA</h3>
+            <button> ANGALIA TIKETI</button>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Mshikamano Bus Transport. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
